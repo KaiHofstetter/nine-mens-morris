@@ -1,6 +1,6 @@
 package net.softwareminds.ninemensmorris.board
 
-class Piece extends Enumeration {
+object Piece extends Enumeration {
   type Piece = Value
   val Black, White = Value
 }
