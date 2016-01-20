@@ -1,4 +1,5 @@
 val scalatest = "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+val scalaxml = "org.scala-lang.modules" %% "scala-xml" % "1.0.4"
 
 lazy val commonSettings = Seq(
   organization := "net.softwareminds",
@@ -10,5 +11,5 @@ lazy val root = (project in file(".")).
   settings(commonSettings: _*).
   settings(
     name := "nine-mens-morris",
-    libraryDependencies += scalatest
+    libraryDependencies ++= Seq(scalatest, scalaxml)
   )
