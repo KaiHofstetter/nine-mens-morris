@@ -36,7 +36,7 @@ object Board {
 class Board(val points: Vector[Vector[Piece]] = emptyBoard) {
 
   def setPiece(xPos: Int, yPos: Int, piece: Piece): Board = {
-    val updatedPoints: Vector[Vector[Piece]] = points.updated(xPos, points.apply(xPos).updated(yPos, piece))
+    val updatedPoints = points.updated(xPos, points.apply(xPos).updated(yPos, piece))
 
     new Board(updatedPoints)
   }
@@ -45,4 +45,10 @@ class Board(val points: Vector[Vector[Piece]] = emptyBoard) {
     points.apply(xPos).apply(yPos)
   }
 
+  def movePiece(startXPos: Int, startYPos: Int, targetXPos: Int, targetYPos: Int): Board = {
+    val pieceAtStartPos = points.apply(startXPos).apply(startYPos)
+    val updateBoard = setPiece(startXPos, startYPos, null)
+
+    updateBoard.setPiece(targetXPos, targetYPos, pieceAtStartPos)
+  }
 }
