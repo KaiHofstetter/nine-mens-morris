@@ -3,34 +3,36 @@ package net.softwareminds.ninemensmorris.board
 import net.softwareminds.ninemensmorris.board.Board.emptyBoard
 import net.softwareminds.ninemensmorris.board.Piece.Piece
 
+import scala.collection.immutable.VectorIterator
+
 /*
   Board layout/coordinates
 
-     1     2     3
-  1 *-----*-----*
-    |  1  |2   3|
-  2 | *---*---* |
-    | |  1|2 3| |
-  3 | | *-*-* | |
-    |1|2|3  |1|2|3
-  4 *-*-*   *-*-*
-    | | |1 2|3| |
-  5 | | *-*-* | |
-    | |1  |2  |3|
-  6 | *---*---* |
-    |1    |2    |3
-  7 *-----*-----*
+     0     1     2
+  0 *-----*-----*
+    |  0  |1   2|
+  1 | *---*---* |
+    | |  0|1 2| |
+  2 | | *-*-* | |
+    |0|1|2  |0|1|2
+  3 *-*-*   *-*-*
+    | | |0 1|2| |
+  4 | | *-*-* | |
+    | |0  |1  |2|
+  5 | *---*---* |
+    |0    |1    |2
+  6 *-----*-----*
 
  */
 
 object Board {
   val emptyBoard = Vector(Vector(null, null, null),
-                          Vector(null, null, null),
-                          Vector(null, null, null),
-                          Vector(null, null, null, null, null, null),
-                          Vector(null, null, null),
-                          Vector(null, null, null),
-                          Vector(null, null, null))
+    Vector(null, null, null),
+    Vector(null, null, null),
+    Vector(null, null, null, null, null, null),
+    Vector(null, null, null),
+    Vector(null, null, null),
+    Vector(null, null, null))
 }
 
 class Board(val points: Vector[Vector[Piece]] = emptyBoard) {
@@ -50,5 +52,9 @@ class Board(val points: Vector[Vector[Piece]] = emptyBoard) {
     val updateBoard = setPiece(startXPos, startYPos, null)
 
     updateBoard.setPiece(targetXPos, targetYPos, pieceAtStartPos)
+  }
+
+  def iterator: Iterator[Piece] = {
+    points.flatten.iterator
   }
 }
