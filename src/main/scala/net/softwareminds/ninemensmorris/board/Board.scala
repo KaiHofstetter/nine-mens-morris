@@ -1,6 +1,6 @@
 package net.softwareminds.ninemensmorris.board
 
-import net.softwareminds.ninemensmorris.board.Board.emptyBoard
+import net.softwareminds.ninemensmorris.board.Board.EmptyBoard
 import net.softwareminds.ninemensmorris.board.Piece.Piece
 
 import scala.collection.immutable.VectorIterator
@@ -26,7 +26,7 @@ import scala.collection.immutable.VectorIterator
  */
 
 object Board {
-  val emptyBoard = Vector(Vector(null, null, null),
+  val EmptyBoard = Vector(Vector(null, null, null),
     Vector(null, null, null),
     Vector(null, null, null),
     Vector(null, null, null, null, null, null),
@@ -35,7 +35,7 @@ object Board {
     Vector(null, null, null))
 }
 
-class Board(val points: Vector[Vector[Piece]] = emptyBoard) {
+class Board(val points: Vector[Vector[Piece]] = EmptyBoard) {
 
   def setPiece(xPos: Int, yPos: Int, piece: Piece): Board = {
     val updatedPoints = points.updated(xPos, points.apply(xPos).updated(yPos, piece))
