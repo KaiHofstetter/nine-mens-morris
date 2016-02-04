@@ -5,7 +5,7 @@ import net.softwareminds.ninemensmorris.board.Piece._
 class BoardRuleException(message: String = null) extends IllegalArgumentException(message)
 class PointOccupiedException(message: String = null) extends BoardRuleException(message)
 class PointEmptyException(message: String = null) extends BoardRuleException(message)
-class MaxNumberOfPiecesException(message: String = null) extends IllegalArgumentException(message)
+class MaxNumberOfPiecesException(message: String = null) extends BoardRuleException(message)
 
 object BoardRuleChecker {
 
