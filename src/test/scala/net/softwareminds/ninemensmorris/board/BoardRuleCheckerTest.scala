@@ -46,6 +46,13 @@ class BoardRuleCheckerTest extends FlatSpec {
     }
   }
 
+  it should "throw NotAdjacentPositionException if piece is moved a position which is not adjacent" in {
+    val board = new Board().setPiece(2, 1, Piece.Black)
+
+    intercept[NotAdjacentPositionException] {
+      BoardRuleChecker.checkMovePiece(board, 2, 1, 3, 2)
+    }
+  }
 }
 
 
