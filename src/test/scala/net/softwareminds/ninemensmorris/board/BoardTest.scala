@@ -115,4 +115,7 @@ class BoardTest extends FlatSpec {
     assert(board.getPiece(6, 6).isEmpty)
   }
 
+  it should "return the correct neighbors of a coordinate" in {
+    assert(Board.getNeighbors(3, 4) == Set(Coordinate(2, 4), Coordinate(3, 5), Coordinate(4, 4)))
+  }
 }
