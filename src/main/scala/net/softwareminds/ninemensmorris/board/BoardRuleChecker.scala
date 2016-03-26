@@ -26,6 +26,7 @@ object BoardRuleChecker {
   def checkMovePiece(board: Board, startXPos: Int, startYPos: Int, targetXPos: Int, targetYPos: Int): Unit = {
     assertPointIsNotEmpty(board, startXPos, startYPos)
     assertPointIsNotOccupied(board, targetXPos, targetYPos)
+    assertMovingToAdjacentPosition(startXPos, startYPos, targetXPos, targetYPos)
   }
 
   private def assertPointIsNotEmpty(board: Board, xPos: Int, yPos: Int): Unit = {
@@ -47,6 +48,16 @@ object BoardRuleChecker {
 
     if (numOfPieces == MaxNumOfPieces) {
       throw new MaxNumberOfPiecesException("Board already has the maximum number of " + piece + " pieces")
+    }
+  }
+
+  private def assertMovingToAdjacentPosition(startXPos: Int, startYPos: Int, targetXPos: Int,
+                                             targetYPos: Int): Unit = {
+    val neighbors = Board.getNeighbors(startXPos, startYPos)
+
+    if (!neighbors.contains(Coordinate(targetXPos, targetYPos))) {
+      throw new NotAdjacentPositionException("Point at x position " + startXPos + " and y position " + startYPos +
+      " is not an adjacent position of x position " + targetXPos + " and y position " + targetYPos )
     }
   }
 }

@@ -34,7 +34,7 @@ class BoardRuleCheckerTest extends FlatSpec {
     val board = new Board().setPiece(2, 2, Black)
 
     intercept[PointEmptyException] {
-      BoardRuleChecker.checkMovePiece(board, 2, 3, 2, 2)
+      BoardRuleChecker.checkMovePiece(board, 2, 1, 2, 3)
     }
   }
 
@@ -46,6 +46,17 @@ class BoardRuleCheckerTest extends FlatSpec {
       BoardRuleChecker.checkMovePiece(board, 2, 2, 2, 3)
     }
   }
+
+  it should "throw NotAdjacentPositionException if the source position is not an adjacent position of the target " +
+    "position" in {
+    val board = new Board().setPiece(3, 2, Black)
+
+    intercept[NotAdjacentPositionException] {
+      BoardRuleChecker.checkMovePiece(board, 3, 2, 3, 3)
+    }
+  }
+
+
 }
 
 
